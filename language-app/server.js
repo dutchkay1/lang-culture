@@ -2,6 +2,7 @@ const express = require('express');
 const langRoute = require('./routes/language')
 require('dotenv').config()
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const app = express();
 app.use(express.json());

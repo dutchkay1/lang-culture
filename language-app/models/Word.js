@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 
 const slugify = require('slugify');
 
-const languageSchema = new mongoose.Schema(
+const wordSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, 'A language must have a name'],
+            required: [true, 'A wod mut be word'],
             unique: true,
             trim: true,
         },
-        slug: String,
-        description: {
+        slugify: String,
+        descripton: {
             type: String,
             trim: true,
         },
@@ -28,11 +28,11 @@ const languageSchema = new mongoose.Schema(
     }
 );
 
-languageSchema.pre('save', function (next) {
+wordSchema.pre('save', function (next) {
     this.slug = slugify(this.name, { lower: true });
     next();
 });
 
-const Language = mongoose.model('Language', languageSchema);
+const Word = mongoose.model('Word', wordSchema);
 
-module.exports = Language;
+module.exports = Word;

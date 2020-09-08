@@ -1,11 +1,21 @@
 const express = require('express')
-const {index,store} = require('../controllers/Language');
+const {index,store,updateLang,deleteLang} = require('../controllers/Language');
 const router = express.Router();
 
 
 router.get('/', index);
+
 router.post('/words', store);
 
-module.exports  = router
+router.patch('/words/:id', updateLang);
+
+router.delete('/words/:id', deleteLang);
+
+
+
+
+
+
+module.exports  = router;
 
 
