@@ -5,7 +5,7 @@ const wordSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'A language must have a name'],
+      required: [true, 'A word must be word'],
       unique: true,
       trim: true,
     },
@@ -32,6 +32,6 @@ wordSchema.pre('save', function (next) {
   next();
 });
 
-const Language = mongoose.model('Word', wordSchema);
+const Word = mongoose.model('Word', wordSchema);
 
-module.exports = Language;
+module.exports = Word;

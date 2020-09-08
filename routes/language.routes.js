@@ -1,18 +1,16 @@
-const express = require('express')
+const express = require('express');
+
+const languageController = require('../controller/language.controller');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Hello World')
-});
+/****
+ * task to do
+ * 1) read all the langauge from the db
+ * 2) update langauge
+ * 3) delete langauge
+ */
 
-router.get('/words', (req, res) => {
-    res.send('avalable words ')
-});
+router.post('/new-language', languageController.newLanguage);
 
-
-router.patch('/words', (req, res)=>{
-    res.send('edited')
-})
-
-module.exports  = router
+module.exports = router;
