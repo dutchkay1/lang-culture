@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 
-const slugify = require('slugify');
-
+ 
 const translationSchema = new mongoose.Schema(
     {
         translation: {
             type: String,
             required: [true, 'A word mut be translated'],
-            unique: true,
-            trim: true,
+             trim: true,
         },
         slug: String,
         descripton: {
@@ -22,7 +20,7 @@ const translationSchema = new mongoose.Schema(
         },
         word: {
             type: mongoose.Schema.ObjectId,
-            ref: 'wod',
+            ref: 'Word',
             required: [true,'every word must have translation'],
         },
         sound: String,
@@ -38,10 +36,6 @@ const translationSchema = new mongoose.Schema(
     }
 );
 
-translationSchema.pre('save', function (next) {
-    this.slug = slugify(this.name, { lower: true });
-    next();
-});
 
 const Translation = mongoose.model('Translation', translationSchema);
 
